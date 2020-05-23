@@ -10,6 +10,8 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @comment = Comment.new
     @comment.article_id = @article.id
+    @article.update_column('view_count', @article.view_count + 1)
+    
 
   end
 

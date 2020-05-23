@@ -1,4 +1,9 @@
 <h1><%= @article.title %></h1>
+<% if @article.view_count == 1 %>
+<%= "#{@article.view_count} view" %>
+<% else %>
+<p><%= "#{@article.view_count} views" %>
+<% end %>
 <p>
   Tags:
   <% @article.tags.each do |tag| %>
