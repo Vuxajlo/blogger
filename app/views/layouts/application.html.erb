@@ -13,13 +13,13 @@
   <p class="flash">
     <%= flash.notice %>
   </p>
-  
+
   <div class="topnav">
   <%= link_to 'All Articles', articles_path %>
   <%= link_to 'Tags', tags_path %>
   </div> 
 
-  <div id="container">
+    <div id="container">
     <div id="content">
       <%= yield %>
       <hr>
@@ -34,6 +34,15 @@
       </h6>
     </div>
   </div>
+  <div id="container">
+  <h3> Most viewed: </h3>
+  <ul>
+  <% Article.order('articles.view_count DESC').limit(3).each do |article| %>
+    <li>
+    <%= link_to article.title, article_path(article) %>
+    </li>
+    <% end %>
+    </div>
 
   </body>
 </html>
